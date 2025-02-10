@@ -2,7 +2,7 @@
   <h2>Item List</h2>
   <a class="btn btn-primary mb-3" routerLink="/create">Add Item</a>
   <div *ngIf="items.length === 0" class="alert alert-info text-center">
-    No item has created yet! Please create one.
+    No items have been created yet. Please add a new item to get started.
   </div>
   <div *ngIf="items.length > 0" class="row">
     <div class="col-md-4 mb-4" *ngFor="let item of items | paginate: { itemsPerPage: 10, currentPage: page }">
