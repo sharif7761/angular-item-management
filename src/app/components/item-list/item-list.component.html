@@ -1,1 +1,21 @@
-<p>item-list works!</p>
+<div class="container mt-4">
+  <h2>Item List</h2>
+  <a class="btn btn-primary mb-3" routerLink="/create">Add Item</a>
+  <div *ngIf="items.length === 0" class="alert alert-info text-center">
+    No item has created yet! Please create one.
+  </div>
+  <div *ngIf="items.length > 0" class="row">
+    <div class="col-md-4 mb-4" *ngFor="let item of items | paginate: { itemsPerPage: 10, currentPage: page }">
+      <div class="card">
+        <img [src]="item.image ? item.image : '/assets/default-image.jpg'" class="card-img-top" height="200" alt="Item Image">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <a class="btn btn-warning btn-sm me-2" [routerLink]="['/edit', item.id]">Edit</a>
+          <button class="btn btn-danger btn-sm" (click)="confirmDelete(item.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>
