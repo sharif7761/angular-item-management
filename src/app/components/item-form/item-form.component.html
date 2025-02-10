@@ -2,7 +2,6 @@
   <h2>{{ isEdit ? 'Edit Item' : 'Create Item' }}</h2>
 
   <form (ngSubmit)="saveItem()" #itemForm="ngForm">
-    <!-- Title Field -->
     <div class="mb-3">
       <label class="form-label">Title</label>
       <input
@@ -18,7 +17,6 @@
       </div>
     </div>
 
-    <!-- Description Field -->
     <div class="mb-3">
       <label class="form-label">Description</label>
       <textarea
@@ -33,7 +31,6 @@
       </div>
     </div>
 
-    <!-- Image URL Field -->
     <div class="mb-3">
       <label class="form-label">Image URL</label>
       <input
@@ -50,7 +47,6 @@
       </ng-template>
     </div>
 
-    <!-- Submit Button -->
     <button type="submit" class="btn btn-success" [disabled]="itemForm.invalid">
       {{ isEdit ? 'Update' : 'Create' }}
     </button>
