@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Router, ActivatedRoute, RouterLink} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item.model';
@@ -8,7 +8,7 @@ import { Item } from '../../models/item.model';
 @Component({
   selector: 'app-item-form',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './item-form.component.html',
   styleUrls: ['./item-form.component.css'],
 })
