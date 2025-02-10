@@ -12,7 +12,7 @@
         required
         #title="ngModel"
       />
-      <div *ngIf="title.invalid && title.touched" class="text-danger">
+      <div *ngIf="(title.invalid && (title.touched || formSubmitted))" class="text-danger">
         Title is required.
       </div>
     </div>
@@ -26,28 +26,30 @@
         required
         #description="ngModel"
       ></textarea>
-      <div *ngIf="description.invalid && description.touched" class="text-danger">
+      <div *ngIf="(description.invalid && (description.touched || formSubmitted))" class="text-danger">
         Description is required.
       </div>
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Image URL</label>
+      <label class="form-label">Image</label>
       <input
-        type="file" (change)="onFileSelected($event)" accept="image/*"
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/*"
         class="form-control"
         name="image"
         required
       />
       <ng-container *ngIf="item.image; else noImage">
-        <img [src]="item.image" height="100" alt="Item Image">
+        <img [src]="item.image" height="100" alt="Item Image" class="my-3">
       </ng-container>
       <ng-template #noImage>
-        <p>* No image uploaded</p>
+        <p class="text-muted">* No image uploaded</p>
       </ng-template>
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="itemForm.invalid">
+    <button type="submit" class="btn btn-success">
       {{ isEdit ? 'Update' : 'Create' }}
     </button>
   </form>

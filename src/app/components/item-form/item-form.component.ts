@@ -15,6 +15,7 @@ import { Item } from '../../models/item.model';
 export class ItemFormComponent {
   item: Item = { id: 0, title: '', description: '', image: '' };
   isEdit: boolean = false;
+  formSubmitted: boolean = false;
 
   constructor(private itemService: ItemService, private router: Router, private route: ActivatedRoute) {}
 
@@ -39,6 +40,10 @@ export class ItemFormComponent {
   }
 
   saveItem() {
+    this.formSubmitted = true;
+    if (!this.item.title || !this.item.description) {
+      return;
+    }
     if (this.isEdit) {
       this.itemService.updateItem(this.item);
     } else {
